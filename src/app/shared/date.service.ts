@@ -21,4 +21,14 @@ export class DateService {
         })
         this.date.next(value)
     }
+    
+    switchDay(day: number) {
+        const value = this.date.value.add(day, 'day');
+        this.date.next(value)
+    }
+
+    toNow() {
+        const now: moment.Moment = moment()
+        this.date.next(now)
+    }
 }

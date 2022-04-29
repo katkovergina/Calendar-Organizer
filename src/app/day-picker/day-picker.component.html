@@ -4,10 +4,11 @@
     </button>
 
     <span>
-        {{ dateService.date | async | moment }}
+        {{ dateService.date | async | moment: 'MMMM Do YYYY' }}
     </span>
 
     <button class="btn-next" (click)="go(1)">
         <img src="../../assets/icons/arrow-right.svg" alt="">
     </button>
 </p>
+

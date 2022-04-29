@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DateService } from './shared/date.service';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+
+  constructor(public dateService: DateService) {}
+
+  toNow() {
+    this.dateService.toNow()
+  }
 }

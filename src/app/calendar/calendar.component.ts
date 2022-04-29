@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit {
 
   calendar!: Week[]
 
-  constructor(private dateService: DateService) { }
+  constructor(public dateService: DateService) { }
 
   ngOnInit(): void {
     this.dateService.date.subscribe(this.generate.bind(this))
@@ -56,6 +56,10 @@ export class CalendarComponent implements OnInit {
 
   select(day: moment.Moment) {
     this.dateService.changeDate(day)
+  }
+
+  go(dir: number) {
+    this.dateService.changeMonth(dir)
   }
 
 }
