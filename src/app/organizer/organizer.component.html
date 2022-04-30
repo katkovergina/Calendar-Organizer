@@ -1,31 +1,38 @@
-<section>
+<section class="wrapper">
     <header>
-        organazier: <strong>{{ dateService.date | async | moment: 'DD.MM.YY' }}</strong>
-        <hr />
+        <span class="date">{{ dateService.date | async | moment: 'DD' }}</span>
     </header>
-    <hr />
     <main>
         <ul *ngIf="tasks.length; else noTasks">
-            <li *ngFor="let task of tasks; let i = index">
-                <span>
-                    <strong>{{ i + 1 }}</strong>
-                    {{ task.title }}
-                </span>
-                <button (click)="remove(task)">Remove</button>
+            <li *ngFor="let task of tasks; let i = index" class="tasks-list">
+                <div class="wrapper-tasks">
+                    <span class="task-title">
+                        {{ i + 1 }}. 
+                        {{ task.title }}
+                    </span>
+                </div>
+                <div class="wrapper-remove-btn">
+                    <button (click)="remove(task)"
+                        class="btn remove-btn">
+                    -
+                </button>
+                </div>
             </li>
         </ul>
         <ng-template #noTasks>
             <p>No Tasks yet..</p>
         </ng-template>
     </main>
-
-    <footer>
+<hr class="line"/>
+    <footer class="footer">
         <form (ngSubmit)="submit()" [formGroup]="form">
-            <input type="text" formControlName="title">
+            <input class="input" type="text" formControlName="title">
             <button 
+                class="btn add-btn"
                 type="submit"
-                [disabled]="form.invalid"
-            >Add</button>
+                [disabled]="form.invalid">
+                +
+            </button>
         </form>
     </footer>
 </section>
