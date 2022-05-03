@@ -1,0 +1,21 @@
+<div [ngClass]="{light: !darkMode, dark: darkMode}">
+    <header class="header">
+      <span class="title-header">Calendar</span>
+      <button class="btn btn-today" (click)="toNow()">Today</button>
+      <app-day-picker></app-day-picker>
+      <button (click) = "changeMode()" class="btn switch-mode">
+        <img class ="switch-mode-icon" [src]="btnIconSrc">
+      </button>
+    </header>
+  
+    <div class="wrapper">
+      <main class="main">
+        <app-calendar class="calendar"></app-calendar>
+      </main>
+    
+      <div>
+        <app-organizer></app-organizer>
+      </div>
+    </div>
+    
+  </div>
