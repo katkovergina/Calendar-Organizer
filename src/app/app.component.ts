@@ -8,9 +8,17 @@ import { DateService } from './shared/date.service';
 })
 export class AppComponent {
 
+  darkMode = false
+  btnIconSrc: string = '../assets/icons/moon.svg'
+
   constructor(public dateService: DateService) {}
 
   toNow() {
     this.dateService.toNow()
+  }
+
+  changeMode() {
+    this.darkMode = !this.darkMode
+    this.darkMode ? this.btnIconSrc = '../assets/icons/sun.svg' : this.btnIconSrc = '../assets/icons/moon.svg'
   }
 }
