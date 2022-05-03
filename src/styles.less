@@ -1,26 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap');
-
-//non-night mode
-
-@background-color: #F8F3F3;
-@text-color: #4E4141;
-@btn-input-border: 1px solid #4E4141;
-@line: 1px solid #4e414110;
-
-@date-background-color: #EBCECE;
-@date-border: 1px solid #EBCECE;
-
-//night mode
-@night-background-color: #291d1d;
-@night-text-color: #f5dbdb;
-@night-btn-input-border: 1px solid #4E4141;
-@night-line: 1px solid #4e414110;
-
-@night-date-background-color: #EBCECE;
-@night-date-border: 1px solid #EBCECE;
-
-
-
+@import url( '../src/styles/theme.less');
 
 * {
   box-sizing: border-box;
@@ -28,7 +7,7 @@
   padding: 0; 
   background-repeat: no-repeat;
   background-position: center center;
-  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, border-color 0.1s ease-in-out; 
+  //transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, border-color 0.1s ease-in-out; 
 } 
 
 main {
@@ -45,13 +24,43 @@ body {
   min-width: 320px;
 
   .light {
-    background-color: @background-color;
-    color: @text-color
+    background-color: var(--background-color);
+    color: var(--text-color);
+    .btn {
+      border: var(--btn-input-border);
+    }
+    .date {
+      border: var(--date-border);
+      background-color: var(--date-background-color);
+    }
+    .main {
+      border-right: var(--line);
+    }
+
+    .wrapper-tasks {
+      border-bottom: var(--line);
+    }
   }
 
   .dark {
-    background-color: @night-background-color;
-    color: @night-text-color
+    background-color: var(--night-background-color);
+    color: var(--night-text-color);
+    .btn {
+      border: var(--night-btn-input-border);
+      color: var(--night-text-color);
+    }
+    .date {
+      border: var(--night-date-border);
+      background-color: var(--night-date-background-color);
+      color: var(--night-text-color);
+    }
+    .main {
+      border-right: var(--night-line);
+    }
+
+    .wrapper-tasks {
+      border-bottom: var(--night-line);
+    }
   }
 }
 
@@ -64,7 +73,6 @@ button:not(:disabled):hover {
 }
 
 .btn {
-  border: 1px solid #4E4141;
   background-color: transparent;
   border-radius: 10px;
   padding: 5px 15px;

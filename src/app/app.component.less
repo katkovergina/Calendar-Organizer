@@ -1,9 +1,23 @@
+@import url( '/src/styles/theme.less');
+
 .header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid #4e414110;
     padding: 20px;
+}
+
+.light {
+    header {
+        border-bottom: var(--line);
+    }
+}
+
+.dark {
+    header {
+     border-bottom: var(--night-line);
+    }
 }
 
 .title-header {
@@ -29,7 +43,5 @@
 }
 
 .main {
-    border-right: 1px solid #4e414110;
-    width: 20%;
     height: 100vh;
 }
