@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,6 +11,8 @@ import { MomentPipe } from './shared/moment.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DayPickerComponent } from './day-picker/day-picker.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { AuthPageComponent } from './auth-page/auth-page.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,17 @@ import { DayPickerComponent } from './day-picker/day-picker.component';
     SelectorComponent,
     OrganizerComponent,
     MomentPipe,
-    DayPickerComponent
+    DayPickerComponent,
+    MainPageComponent,
+    AuthPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
