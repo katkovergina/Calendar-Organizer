@@ -1,6 +1,6 @@
 <div>
     <div>
-        <form #authForm="ngForm">
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
             <div>
                 <label for="email">E-mail</label>
                 <input 
