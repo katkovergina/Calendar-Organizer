@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-auth-page',
@@ -11,6 +12,10 @@ export class AuthPageComponent {
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode
+  }
+
+  inSubmit(form: NgForm) {
+    
   }
 
 }
