@@ -1,6 +1,12 @@
 <div>
     <div>
-        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <div *ngIf="error">
+            <p>{{ error }}</p>
+        </div>
+        <div *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
             <div>
                 <label for="email">E-mail</label>
                 <input 

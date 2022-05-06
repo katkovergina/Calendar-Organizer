@@ -9,7 +9,9 @@ import { AuthService } from '../shared/auth.service';
 })
 export class AuthPageComponent {
 
-  isLoginMode:boolean = true
+  isLoginMode: boolean = true
+  isLoading: boolean = false
+  error: string | null = null
 
   constructor(private authService: AuthService) {}
 
@@ -24,13 +26,18 @@ export class AuthPageComponent {
     const email = form.value.email
     const password = form.value.password
 
+
+    this.isLoading = true
     if (this.isLoginMode) {
       ///
     } else {
       this.authService.signup(email, password).subscribe(resData => {
         console.log(resData)
+        this.isLoading = false
       }, error => {
         console.log(error)
+        this.error = 'An error occured!'
+        this.isLoading = false
       })
     }
     form.reset()
