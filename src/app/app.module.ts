@@ -9,11 +9,12 @@ import { OrganizerComponent } from './organizer/organizer.component';
 
 import { MomentPipe } from './shared/moment.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DayPickerComponent } from './day-picker/day-picker.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './auth-page/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
