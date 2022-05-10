@@ -1,17 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../shared/auth.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DateService } from '../shared/date.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.less']
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit, OnDestroy {
+  isAuthenticated: boolean = false
+  private userSub!: Subscription
 
   darkMode = false
   btnIconSrc: string = '../assets/icons/moon.svg'
 
-  constructor(public dateService: DateService) {}
+  constructor(
+    public dateService: DateService, 
+    private AuthService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.userSub = this.AuthService.user.subscribe(user => {
+      this.isAuthenticated = !user ? false : true
+    })
+  }
 
   toNow() {
     this.dateService.toNow()
@@ -20,6 +33,14 @@ export class MainPageComponent {
   changeMode() {
     this.darkMode = !this.darkMode
     this.darkMode ? this.btnIconSrc = '../assets/icons/sun.svg' : this.btnIconSrc = '../assets/icons/moon.svg'
+  }
+
+  onLogout() {
+    this.AuthService.logout()
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe()
   }
 
 }
