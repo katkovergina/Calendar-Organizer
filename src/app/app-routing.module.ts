@@ -1,4 +1,4 @@
-import { AuthGuard } from './auth-page/auth.guard';
+import { AuthGuard } from './shared/auth.guard';
 import { NgModule } from "@angular/core";
 import { Route, RouterModule, Routes } from "@angular/router";
 import { AuthPageComponent } from "./auth-page/auth-page.component";

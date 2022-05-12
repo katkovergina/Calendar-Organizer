@@ -14,7 +14,7 @@ import { DayPickerComponent } from './day-picker/day-picker.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { AuthInterceptorService } from './auth-page/auth-interceptor.service';
+import { AuthInterceptorService } from './shared/auth-interceptor.service';
 
 @NgModule({
   declarations: [

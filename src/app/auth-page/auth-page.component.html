@@ -1,13 +1,21 @@
-<div>
-    <div>
-        <div *ngIf="error">
+<div class="auth-wrapper" [ngClass]="{light: !darkMode, dark: darkMode}">
+
+    <button (click) = "changeMode()" class="btn switch-mode auth-page-btn" *ngIf="!isLoading">
+        <img class ="switch-mode-icon" [src]="btnIconSrc">
+    </button>
+
+    <div class="loading" *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    
+    <div class="auth-form" *ngIf="!isLoading">
+
+        <div *ngIf="error" class="error-wrapper">
             <p>{{ error }}</p>
         </div>
-        <div *ngIf="isLoading">
-            <app-loading-spinner></app-loading-spinner>
-        </div>
-        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
-            <div>
+
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+            <div class="form-input">
                 <label for="email">E-mail</label>
                 <input 
                     type="email" 
@@ -15,9 +23,10 @@
                     ngModel
                     name="email"
                     required
-                    email>
+                    email
+                >
             </div>
-            <div>
+            <div class="form-input">
                 <label for="password">Password</label>
                 <input 
                     type="password" 
@@ -26,11 +35,12 @@
                     name="password"
                     required
                     minlength="6"
-                    >
+                >
             </div>
-            <div>
-                <button type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign up' }}</button>
-                <button (click)="onSwitchMode()" type="button">Switch to {{ isLoginMode ? 'Sign up' : 'Login' }}</button>
+
+            <div class="button-wrapper">
+                <button class="btn" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign up' }}</button>
+                <button class="btn"(click)="onSwitchMode()" type="button">Switch to {{ isLoginMode ? 'Sign up' : 'Login' }}</button>
             </div>
         </form>
     </div>

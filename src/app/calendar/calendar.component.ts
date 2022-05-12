@@ -18,6 +18,7 @@ interface Week {
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.less']
 })
+
 export class CalendarComponent implements OnInit {
 
   calendar!: Week[]
@@ -61,5 +62,4 @@ export class CalendarComponent implements OnInit {
   go(dir: number) {
     this.dateService.changeMonth(dir)
   }
-
 }

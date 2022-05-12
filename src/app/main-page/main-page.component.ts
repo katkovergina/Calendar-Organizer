@@ -42,5 +42,4 @@ export class MainPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.userSub.unsubscribe()
   }
-
 }

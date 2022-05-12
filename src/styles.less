@@ -7,12 +7,7 @@
   padding: 0; 
   background-repeat: no-repeat;
   background-position: center center;
-  //transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, border-color 0.1s ease-in-out; 
 } 
-
-main {
-  width: 100%;
-}
 
 html {
   font-size: 16px;
@@ -66,11 +61,18 @@ body {
 
 ul, li {
   list-style-type: none;
+
+  &:hover {
+    transition: 0.2s ease-in-out; 
+  }
 }
 
 button:not(:disabled):hover {
   opacity: 0.7;
   cursor: pointer;
+  &:hover {
+    transition: 0.2s ease-in-out; 
+  }
 }
 
 table {

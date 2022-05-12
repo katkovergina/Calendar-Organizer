@@ -1,11 +1,9 @@
 import { Route, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { User } from './../auth-page/user.model';
+import { BehaviorSubject, throwError } from 'rxjs';
+import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-
 export interface AuthResponseData {
     kind: string
     idToken: string	
@@ -52,7 +50,6 @@ export class AuthService {
         ).pipe(catchError(this.handleError), tap(resData => {
             this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn)
         }))
-        
     }
 
     autoLogin() {
@@ -112,8 +109,6 @@ export class AuthService {
         this.autoLogout(expiresIn * 1000)
         localStorage.setItem('userData', JSON.stringify(user))
     }
-
-
 
     private handleError(errorRes: HttpErrorResponse) {
         let errorMessage = 'An unknown error occured!'

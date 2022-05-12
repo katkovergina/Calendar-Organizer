@@ -16,8 +16,15 @@ export class AuthPageComponent {
   isLoginMode: boolean = true
   isLoading: boolean = false
   error: string | null = null
+  darkMode = false
+  btnIconSrc: string = '../assets/icons/moon.svg'
 
   constructor(private authService: AuthService, private router: Router) {}
+
+  changeMode() {
+    this.darkMode = !this.darkMode
+    this.darkMode ? this.btnIconSrc = '../assets/icons/sun.svg' : this.btnIconSrc = '../assets/icons/moon.svg'
+  }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode
@@ -32,14 +39,12 @@ export class AuthPageComponent {
 
     let authObs: Observable<AuthResponseData>
 
-
     this.isLoading = true
     if (this.isLoginMode) {
       authObs = this.authService.login(email, password)
     } else {
       authObs = this.authService.signup(email, password)
     }
-
 
     authObs.subscribe(
       resData => {
@@ -53,8 +58,6 @@ export class AuthPageComponent {
         this.isLoading = false
       }
     )
-
     form.reset()
   }
-
 }
