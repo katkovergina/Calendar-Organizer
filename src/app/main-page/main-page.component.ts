@@ -13,7 +13,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
   private userSub!: Subscription
 
   darkMode = false
-  btnIconSrc: string = '../assets/icons/moon.svg'
 
   constructor(
     public dateService: DateService, 
@@ -32,7 +31,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   changeMode() {
     this.darkMode = !this.darkMode
-    this.darkMode ? this.btnIconSrc = '../assets/icons/sun.svg' : this.btnIconSrc = '../assets/icons/moon.svg'
   }
 
   onLogout() {

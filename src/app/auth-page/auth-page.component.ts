@@ -17,13 +17,11 @@ export class AuthPageComponent {
   isLoading: boolean = false
   error: string | null = null
   darkMode = false
-  btnIconSrc: string = '../assets/icons/moon.svg'
 
   constructor(private authService: AuthService, private router: Router) {}
 
   changeMode() {
     this.darkMode = !this.darkMode
-    this.darkMode ? this.btnIconSrc = '../assets/icons/sun.svg' : this.btnIconSrc = '../assets/icons/moon.svg'
   }
 
   onSwitchMode() {
